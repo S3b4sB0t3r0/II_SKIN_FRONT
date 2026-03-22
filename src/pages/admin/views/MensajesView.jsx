@@ -19,7 +19,7 @@ const MensajesView = () => {
   const fetchContactos = async () => {
     try {
       setLoading(true);
-      const res  = await fetch(`${API_URL}/contact`);
+      const res = await fetch(`${API_URL}/api/contact`);
       const data = await res.json();
       setMensajes(data);
     } catch (err) {
@@ -37,7 +37,7 @@ const MensajesView = () => {
     setSending(true);
     setError('');
     try {
-      const res = await fetch(`${API_URL}/contacto/responder/${contacto._id}`, {
+      const res = await fetch(`${API_URL}/api/contacto/responder/${contacto._id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ replyMessage: reply }),
