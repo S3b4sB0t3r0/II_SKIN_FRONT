@@ -4,10 +4,9 @@ import API_URL from '../../../config/config';
 
 // ─── Service (inline) ────────────────────────────────────────────────────────
 
-const getUsers   = async ()      => { const r = await fetch(API_URL);                                                                                                      if (!r.ok) throw new Error("Error al obtener clientes");    return r.json(); };
-const updateUser = async (id, d) => { const r = await fetch(`${API_URL}/${id}`, { method: "PUT",    headers: { "Content-Type": "application/json" }, body: JSON.stringify(d) }); if (!r.ok) throw new Error("Error al actualizar cliente"); return r.json(); };
-const deleteUser = async (id)    => { const r = await fetch(`${API_URL}/${id}`, { method: "DELETE" });                                                                     if (!r.ok) throw new Error("Error al eliminar cliente");    return r.json(); };
-
+const getUsers   = async ()      => { const r = await fetch(`${API_URL}/api/user/users`);                                                                                                      if (!r.ok) throw new Error("Error al obtener clientes");    return r.json(); };
+const updateUser = async (id, d) => { const r = await fetch(`${API_URL}/api/user/${id}`, { method: "PUT",    headers: { "Content-Type": "application/json" }, body: JSON.stringify(d) }); if (!r.ok) throw new Error("Error al actualizar cliente"); return r.json(); };
+const deleteUser = async (id)    => { const r = await fetch(`${API_URL}/api/user/${id}`, { method: "DELETE" });                                                                     if (!r.ok) throw new Error("Error al eliminar cliente");    return r.json(); };
 // ─── Modal Edición ────────────────────────────────────────────────────────────
 const EditModal = ({ user, onClose, onSave }) => {
   const [form, setForm] = useState({
