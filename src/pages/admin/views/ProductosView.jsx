@@ -124,7 +124,7 @@ const ProductModal = ({ product, onClose, onSaved }) => {
     setError(null);
     try {
       const method = isNew ? 'POST' : 'PUT';
-      const url    = isNew ? API_URL : `${API_URL}/${form._id}`;
+      const url = isNew ? `${API_URL}/api/products` : `${API_URL}/api/products/${form._id}`;
 
       // Build FormData to support image upload
       const formData = new FormData();
@@ -504,7 +504,7 @@ const ProductosView = () => {
     setLoading(true);
     setError(null);
     try {
-      const res  = await fetch(API_URL);
+      const res = await fetch(`${API_URL}/api/products`);
       const data = await res.json();
       if (!data.success) throw new Error(data.message || 'Error del servidor');
       setProducts(data.data);
@@ -526,7 +526,7 @@ const ProductosView = () => {
   // ── Delete ──
   const handleDelete = async () => {
     try {
-      const res  = await fetch(`${API_URL}/${toDelete._id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_URL}/api/products/${form._id}`, { method: 'DELETE' });
       const data = await res.json();
       if (!data.success) throw new Error(data.message || 'Error al eliminar');
       showToast(`"${toDelete.name}" eliminado`);
