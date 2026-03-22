@@ -526,7 +526,7 @@ const ProductosView = () => {
   // ── Delete ──
   const handleDelete = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/products/${form._id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_URL}/api/products/${toDelete._id}`, { method: 'DELETE' });
       const data = await res.json();
       if (!data.success) throw new Error(data.message || 'Error al eliminar');
       showToast(`"${toDelete.name}" eliminado`);
